@@ -67,7 +67,8 @@ kramdown:
   input: GFM
 
 # Build settings
-theme: jekyll-theme-chirpy
+# We already have the full theme locally, no need to specify gem
+# theme: jekyll-theme-chirpy
 
 plugins:
   - jekyll-paginate
