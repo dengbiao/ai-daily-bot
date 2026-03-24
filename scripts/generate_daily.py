@@ -25,42 +25,75 @@ title: 每日AI日报 - {date_str}
 date: {date.strftime(DATE_FORMAT)}
 categories: AI日报
 tags: AI,每日新闻,论文,开源项目
+excerpt: {len(papers)}篇最新论文 · {len(repos)}个热门开源项目 · {len(news)}条行业新闻
 ---
 
-# 每日AI日报 - {date_str}
-
-这里是今天AI领域的最新进展，包含最新论文、热门开源项目和行业新闻。
+<div class="daily-intro mb-4">
+这里是今天AI领域的最新进展，包含最新论文、热门开源项目和行业新闻，所有内容均可点击链接查看原始来源。
+</div>
 
 """
 
     # 添加论文部分
     if papers:
-        content += f"\n## 📄 最新AI论文\n\n"
-        for i, paper in enumerate(papers, 1):
-            content += f"### {i}. [{paper['title']}]({paper['url']})\n\n"
-            content += f"**作者**: {paper['authors']}  \n"
-            content += f"**票数**: {paper['votes']}  \n"
-            content += f"**摘要**: {paper['abstract']}  \n"
-            content += f"**来源**: [{paper['source']}]({paper['url']})\n\n"
+        content += f"\n## 📄 最新AI论文\n\n<div class=\"row row-cols-1 g-4 mb-5\">\n"
+        for paper in papers:
+            abstract = paper['abstract'] if paper['abstract'] and paper['abstract'] != '无描述' else '暂无摘要'
+            content += f"""<div class="col">
+<div class="card h-100">
+  <div class="card-body">
+    <h5 class="card-title"><a href="{paper['url']}" target="_blank" rel="noopener">{paper['title']}</a></h5>
+    <h6 class="card-subtitle mb-2 text-muted">👤 {paper['authors']} · ⭐ {paper['votes']}</h6>
+    <p class="card-text">{abstract}</p>
+  </div>
+  <div class="card-footer bg-transparent">
+    <a href="{paper['url']}" class="btn btn-sm btn-outline-primary" target="_blank" rel="noopener">查看原文 →</a>
+  </div>
+</div>
+</div>
+"""
+        content += "</div>\n"
 
     # 添加热门仓库部分
     if repos:
-        content += f"\n## ⭐ GitHub热门AI仓库\n\n"
-        for i, repo in enumerate(repos, 1):
-            content += f"### {i}. [{repo['name']}]({repo['url']})\n\n"
-            content += f"**描述**: {repo['description']}  \n"
-            content += f"**语言**: {repo['language']}  \n"
-            content += f"**Star数**: {repo['stars']} | Fork数**: {repo['forks']}  \n"
-            content += f"**来源**: [{repo['source']}]({repo['url']})\n\n"
+        content += f"\n## ⭐ GitHub热门AI仓库\n\n<div class=\"row row-cols-1 g-4 mb-5\">\n"
+        for repo in repos:
+            desc = repo['description'] if repo['description'] else '暂无描述'
+            lang = repo['language'] if repo['language'] and repo['language'] != '未知' else '多种语言'
+            content += f"""<div class="col">
+<div class="card h-100">
+  <div class="card-body">
+    <h5 class="card-title"><a href="{repo['url']}" target="_blank" rel="noopener">{repo['name']}</a></h5>
+    <h6 class="card-subtitle mb-2 text-muted">💻 {lang} · ⭐ {repo['stars']} · ⑂ {repo['forks']}</h6>
+    <p class="card-text">{desc}</p>
+  </div>
+  <div class="card-footer bg-transparent">
+    <a href="{repo['url']}" class="btn btn-sm btn-outline-primary" target="_blank" rel="noopener">查看仓库 →</a>
+  </div>
+</div>
+</div>
+"""
+        content += "</div>\n"
 
     # 添加新闻部分
     if news:
-        content += f"\n## 📰 AI领域新闻\n\n"
-        for i, item in enumerate(news, 1):
-            content += f"### {i}. [{item['title']}]({item['url']})\n\n"
-            content += f"**发布**: {item['published']}  \n"
-            content += f"**摘要**: {item['summary']}  \n"
-            content += f"**来源**: [{item['source_name']}]({item['url']})\n\n"
+        content += f"\n## 📰 AI领域新闻\n\n<div class=\"row row-cols-1 g-4 mb-5\">\n"
+        for item in news:
+            summary = item['summary'][:200] + '...' if len(item['summary']) > 200 else item['summary']
+            content += f"""<div class="col">
+<div class="card h-100">
+  <div class="card-body">
+    <h5 class="card-title"><a href="{item['url']}" target="_blank" rel="noopener">{item['title']}</a></h5>
+    <h6 class="card-subtitle mb-2 text-muted">📅 {item['published']} · 🏛️ {item['source_name']}</h6>
+    <p class="card-text">{summary}</p>
+  </div>
+  <div class="card-footer bg-transparent">
+    <a href="{item['url']}" class="btn btn-sm btn-outline-primary" target="_blank" rel="noopener">阅读原文 →</a>
+  </div>
+</div>
+</div>
+"""
+        content += "</div>\n"
 
     # 添加页脚
     content += """
