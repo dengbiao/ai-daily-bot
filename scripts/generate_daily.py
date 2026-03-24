@@ -23,8 +23,8 @@ def generate_markdown(date: datetime, papers: List[Dict], repos: List[Dict], new
     content = f"""---
 title: 每日AI日报 - {date_str}
 date: {date.strftime(DATE_FORMAT)}
-categories: AI日报
-tags: AI,每日新闻,论文,开源项目
+categories: daily-ai-news
+tags: AI, daily-news, paper, open-source
 excerpt: {len(papers)}篇最新论文 · {len(repos)}个热门开源项目 · {len(news)}条行业新闻
 ---
 

@@ -61,6 +61,9 @@ share: true
 # The amount of recent posts to display in the "Recent Posts" list.
 recent_posts: 6
 
+# Permalink format for posts
+permalink: /:categories/:year/:month/:day/:title.html
+
 # Enable automatically highlighting.
 kramdown:
   syntax_highlighter: rouge
