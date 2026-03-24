@@ -1,102 +1,67 @@
-# Welcome to Chirpy Daily AI Bot!
-#
-# This is the configuration file for the Chirpy Jekyll theme.
-# Check out https://github.com/cotes2020/jekyll-theme-chirpy
-# for more information on the configurations.
-
-# Site settings
-lang: zh-CN
-timezone: Asia/Shanghai
+# 每日AI日报配置
 title: 每日AI日报
-tagline: 每天更新最新AI论文、开源项目和新闻
-description: 每日AI日报 - 聚合每日AI领域最新进展
-baseurl: "/ai-daily-bot" # the subpath of your site, e.g. /blog/
-url: "https://dengbiao.github.io" # the base hostname & protocol for your site e.g. https://username.github.io
-github_repo: https://github.com/dengbiao/ai-daily-bot
-google_analytics:
-  id: google_analytics_id # the id of Google Analytics (eg: G-xxxxxx
+subtitle: 每天更新最新AI论文、开源项目和新闻
+description: 每日AI日报 - 聚合每日AI领域最新进展，所有内容可追溯原始信源
 
-# Author
+# URL配置
+baseurl: "/ai-daily-bot" # 如果部署在根域名下，改为 ""
+url: "https://dengbiao.github.io"
+
+# 作者信息
 author:
   name: 每日AI日报
-  email: your@email.com
+  email: 
 
-# Social Links
-# The order of display is as per the order defined here.
-social:
-  # name: url
-  github: https://github.com/cotes2020/jekyll-theme-chirpy
-
-# SITE SETTINGS
-# ------------
-# Change to your choice of keywords for search engines.
-keywords: 人工智能,AI,日报,机器学习,深度学习,论文,每日新闻
-
-# The keywords to filter out the last n posts. If you want to filter,
-# you need to provide the `keywords` configuration above, and uncomment the setting.
-# keywords_filter: ~
-
-# The introduction text at the top of the homepage. If `site.description has
-# replaced it.
-intro: >
-  这里每天自动聚合最新AI论文、GitHub热门AI仓库和AI领域新闻，帮助你快速跟踪AI领域最新进展。
-
-# The number of posts displayed on each pagination page.
-paginate: 10
-
-# The minimum length of the truncated post content displayed on the homepage, unit: words
-# If you want to display the full posts content on the homepage, set it to `false`.
-excerpt_length: 100
-
-# Output a table of contents (toc) is automatically generated inserted for posts that have
-# more content.
-toc: true
-
-# The categories will be sorted alphabetically, change to `date` to sort them by date.
-category_order: date
-
-# Share button on the bottom of the post.
-share: true
-
-# The amount of recent posts to display in the "Recent Posts" list.
-recent_posts: 6
-
-# Permalink format for posts
-permalink: /:categories/:year/:month/:day/:title.html
-
-# Enable automatically highlighting.
-kramdown:
-  syntax_highlighter: rouge
-  input: GFM
-
-# Build settings
-# We already have the full theme locally, no need to specify gem
-# theme: jekyll-theme-chirpy
-
+# 主题配置
+remote_theme: cotes2020/jekyll-theme-chirpy@master
 plugins:
   - jekyll-paginate
   - jekyll-sitemap
   - jekyll-feed
   - jekyll-seo-tag
-  - jekyll-redirect-from
+  - jekyll-archives
   - jekyll-include-cache
 
-# Markdown Converter
-markdown: kramdown
+# 分页配置
+paginate: 10
+paginate_path: /page/:num/
 
-# Exclude these files from generation.
+# 永久链接格式
+permalink: /:categories/:year/:month/:day/:title.html
+
+# 搜索配置
+search:
+  provider: 
+
+# 评论配置
+comments:
+  provider: false
+
+# 分析配置
+analytics:
+  provider: false
+
+# 社交链接
+social:
+  github: 
+  twitter: 
+
+# 时间设置
+timezone: Asia/Shanghai
+lang: zh-CN
+
+# 分类顺序
+category_order: date
+
+# 日期格式
+date_format: "%Y-%m-%d"
+
+# 时区
+timezone: Asia/Shanghai
+
+# 排除文件
 exclude:
-  - .idea
-  - .vendor
-  - .git
-  - .github
-  - node_modules
-  - vendor/bundle/
-  - vendor/cache/
-  - vendor/gems/
-  - vendor/ruby/
-  - venv
-  - scripts
-  - requirements.txt
+  - utils
   - README.md
   - LICENSE
+  - "*.gemspec"
