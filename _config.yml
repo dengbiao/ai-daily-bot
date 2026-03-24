@@ -10,9 +10,9 @@ timezone: Asia/Shanghai
 title: 每日AI日报
 tagline: 每天更新最新AI论文、开源项目和新闻
 description: 每日AI日报 - 聚合每日AI领域最新进展
-baseurl: "" # the subpath of your site, e.g. /blog/
-url: "" # the base hostname & protocol for your site e.g. https://username.github.io
-github_repo: https://github.com/<username>/<username>.github.io
+baseurl: "/ai-daily-bot" # the subpath of your site, e.g. /blog/
+url: "https://dengbiao.github.io" # the base hostname & protocol for your site e.g. https://username.github.io
+github_repo: https://github.com/dengbiao/ai-daily-bot
 google_analytics:
   id: google_analytics_id # the id of Google Analytics (eg: G-xxxxxx
 
